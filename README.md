@@ -136,3 +136,13 @@ android:hint="비밀번호를 입력해주세요."
 
 
 ### # 실행 화면 
+
+<table>
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/62695395/162607814-69d424e2-c2cd-4a38-b172-8648c70726b0.gif" width="300" height="540" /></td><td><img src="https://user-images.githubusercontent.com/62695395/162607886-2ec75c61-5034-4262-bba4-1dea58478156.gif"  width="300" height="540" /></td><td><img src="https://user-images.githubusercontent.com/62695395/162608078-d87fcc10-77a5-49cd-8158-37e44b2c56a8.gif" width="300" height="540" /></td>
+  <tr>
+</table>
+
+
+                                                                                                                                         
+                                                                                                                                         
