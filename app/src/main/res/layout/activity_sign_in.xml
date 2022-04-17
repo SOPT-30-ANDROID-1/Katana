@@ -10,88 +10,88 @@
         android:id="@+id/tv_sopt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
         android:text="SOPT"
         android:textSize="40dp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="60dp"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_id"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="50dp"
         android:text="아이디"
-        android:textStyle="bold"
         android:textColor="#000000"
-        app:layout_constraintTop_toBottomOf="@+id/tv_sopt"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="50dp"
-        android:layout_marginHorizontal="30dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_sopt" />
 
     <EditText
         android:id="@+id/et_id"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
         android:hint="아이디를 입력해주세요."
         android:textSize="15dp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_id"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginHorizontal="30dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_id" />
 
     <TextView
         android:id="@+id/tv_pw"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="30dp"
         android:text="비밀번호"
-        android:textStyle="bold"
         android:textColor="#000000"
-        app:layout_constraintTop_toBottomOf="@+id/et_id"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="30dp"
-        android:layout_marginHorizontal="30dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/et_id" />
 
     <EditText
         android:id="@+id/et_pw"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
         android:hint="비밀번호를 입력해주세요."
-        android:textSize="15dp"
         android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@+id/tv_pw"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginHorizontal="30dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_pw" />
 
     <Button
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="30dp"
         android:backgroundTint="@color/purple_500"
-        app:layout_constraintTop_toBottomOf="@+id/et_pw"
+        android:text="LOGIN"
+        android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="30dp"
-        android:layout_marginHorizontal="30dp"
-        android:text="LOGIN"
-        android:textColor="#ffffff"/>
+        app:layout_constraintTop_toBottomOf="@+id/et_pw" />
 
     <Button
         android:id="@+id/btn_signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="10dp"
         android:backgroundTint="#8BC34A"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login"
+        android:text="회원가입"
+        android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="30dp"
-        android:text="회원가입"
-        android:textColor="#ffffff"/>
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

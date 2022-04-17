@@ -17,18 +17,18 @@ class SignUpActivity : AppCompatActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        ClickSignUpDone()
+        signUp()
 
     }
     //회원가입 완료 버튼 클릭시
-    private fun ClickSignUpDone(){
+    private fun signUp(){
         binding.btnSignupDone.setOnClickListener {
             val name = binding.etSignupName.text.toString()
             val id = binding.etSignupId.text.toString()
             val pw = binding.etSignupPw.text.toString()
 
             //name,id,pw 셋 중 하나라도 비어있다면
-            if(name.isEmpty() || id.isEmpty() || pw.isEmpty()){
+            if(name.isBlank() || id.isBlank() || pw.isBlank()){
                 Toast.makeText(this,"입력되지 않은 정보가 있습니다", Toast.LENGTH_SHORT).show()
 
             }else{ //모두 채워져 있을 경우
