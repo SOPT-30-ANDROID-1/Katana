@@ -95,8 +95,8 @@ class FollowerAdapter :  RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder
 ``` kotlin
 val itemTouchHelperCallback = ItemTouchHelperCallback(followerAdapter)
 
-        val helper = ItemTouchHelper(itemTouchHelperCallback)
-        helper.attachToRecyclerView(binding.rvFollower)
+val helper = ItemTouchHelper(itemTouchHelperCallback)
+helper.attachToRecyclerView(binding.rvFollower)
 ```
 + RecyclerView에 적용
 
