@@ -135,3 +135,13 @@ android:maxLines="1"
 ``` 
 + __ellipsize 속성 end 사용__ : 뒷 부분을 ... 으로 표시
 + __maxLines 속성 사용__ : TextView의 라인 수를 지정
+
+
+### # 실행 화면 
+
+<table>
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/62695395/164729567-fdcf4af2-3712-49b3-86c9-3759bab0a746.gif" width="270" height="480" /></td><td><img src="https://user-images.githubusercontent.com/62695395/164729802-87348470-1990-490e-bddb-090043eab048.gif"  width="270" height="480" /></td>
+  <tr>
+</table>
+
