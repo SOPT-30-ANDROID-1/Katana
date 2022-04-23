@@ -1,12 +1,6 @@
 package com.example.seminar1
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-class ItemDecoration {
-}
-=======
-=======
->>>>>>> Stashed changes
+
 import android.content.Context
 import android.graphics.Rect
 import android.util.TypedValue
@@ -51,8 +45,3 @@ class ItemDecoration (context: Context, private val spanCount : Int) : RecyclerV
     }
 }
 
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
