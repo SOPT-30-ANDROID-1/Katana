@@ -1,57 +1,71 @@
 package com.example.seminar1
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ItemTouchHelper
+import com.example.seminar1.databinding.FragmentFollowerRecyclerViewBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [FollowerRecyclerView.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FollowerRecyclerView : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var followerAdapter: FollowerAdapter
+    private var _binding : FragmentFollowerRecyclerViewBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentFollowerRecyclerViewBinding.inflate(layoutInflater,container,false)
+
+        initAdapter()
+        return binding.root
+
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_follower_recycler_view, container, false)
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FollowerRecyclerView.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-                FollowerRecyclerView().apply {
-                    arguments = Bundle().apply {
-                        putString(ARG_PARAM1, param1)
-                        putString(ARG_PARAM2, param2)
-                    }
+    private fun initAdapter(){
+        followerAdapter = FollowerAdapter()
+        binding.rvFollower.addItemDecoration(ItemDecoration(requireContext(),1))
+        binding.rvFollower.adapter = followerAdapter
+
+        followerAdapter.userList.addAll(
+                listOf(
+                        UserData("김다희","안드로이드 파트원"),
+                        UserData("김다희","안드로이드 파트원"),
+                        UserData("김다희","안드로이드 파트원"),
+                        UserData("김다희","안드로이드 파트원")
+                )
+        )
+        followerAdapter.notifyDataSetChanged()
+
+        followerAdapter.setItemClickListener(object : FollowerAdapter.ItemClickListener{
+            override fun onClick(view: View, position: Int) {
+                val name = followerAdapter.userList[position].name
+                val introduce = followerAdapter.userList[position].introduction
+
+                val intent = Intent(context, DetailActivity::class.java).apply {
+                    putExtra("name",name)
+                    putExtra("introduce",introduce)
                 }
+                startActivity(intent)
+
+            }
+        })
+
+        val itemTouchHelperCallback = ItemTouchHelperCallback(followerAdapter)
+
+        val helper = ItemTouchHelper(itemTouchHelperCallback)
+        helper.attachToRecyclerView(binding.rvFollower)
+
     }
+
+
+
 }
