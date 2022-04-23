@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
 </selector>
@@ -21,4 +22,24 @@
         android:right="0dp"
         android:top="0dp" />
 </shape>
+>>>>>>> Stashed changes
+=======
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:angle="0"
+        android:endColor="#2ebf91"
+        android:startColor="#8360c3"
+        android:type="linear" />
+    <corners
+        android:bottomLeftRadius="15dp"
+        android:bottomRightRadius="15dp"
+        android:topLeftRadius="15dp"
+        android:topRightRadius="15dp" />
+    <padding
+        android:bottom="0dp"
+        android:left="0dp"
+        android:right="0dp"
+        android:top="0dp" />
+</shape>
+
 >>>>>>> Stashed changes

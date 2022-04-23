@@ -1,8 +1,11 @@
 package com.example.seminar1
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 class ItemTouchHelperCallback {
 =======
+=======
+>>>>>>> Stashed changes
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 
@@ -35,5 +38,8 @@ class ItemTouchHelperCallback(private val listener: ItemTouchHelperListener):Ite
         fun onItemMove(from_position: Int, to_position: Int): Boolean
         fun onItemSwipe(position: Int)
     }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }

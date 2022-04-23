@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
 </selector>
 =======
+=======
+>>>>>>> Stashed changes
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <solid android:color="#EBEAEC" />
     <corners
@@ -17,4 +20,7 @@
         android:right="0dp"
         android:top="0dp" />
 </shape>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

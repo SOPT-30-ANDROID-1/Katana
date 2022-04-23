@@ -7,7 +7,10 @@
     tools:context=".DetailActivity">
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
     <ImageView
         android:id="@+id/iv_profile2"
         android:layout_width="120dp"
@@ -44,5 +47,8 @@
         app:layout_constraintTop_toBottomOf="@id/tv_detail_name"
         tools:text="설명 :" />
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 </androidx.constraintlayout.widget.ConstraintLayout>
