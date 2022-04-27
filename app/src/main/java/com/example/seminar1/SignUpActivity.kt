@@ -17,11 +17,11 @@ class SignUpActivity : AppCompatActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        signUp()
+        initAuthButtonClickListeners()
 
     }
     //회원가입 완료 버튼 클릭시
-    private fun signUp(){
+    private fun initAuthButtonClickListeners(){
         binding.btnSignupDone.setOnClickListener {
             val name = binding.etSignupName.text.toString()
             val id = binding.etSignupId.text.toString()

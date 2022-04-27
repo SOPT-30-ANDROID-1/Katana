@@ -5,22 +5,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.seminar1.databinding.FragmentRepositoryRecyclerViewBinding
+import com.example.seminar1.databinding.FragmentRepositoryBinding
 
-class RepositoryRecyclerView : Fragment() {
+class RepositoryFragment : Fragment() {
     private lateinit var repositoryAdapter: RepositoryAdapter
-    private var _binding : FragmentRepositoryRecyclerViewBinding? = null
+    private var _binding : FragmentRepositoryBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentRepositoryRecyclerViewBinding.inflate(layoutInflater, container,false)
-
-        initAdapter()
+        _binding = FragmentRepositoryBinding.inflate(layoutInflater, container,false)
         return binding.root
 
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initAdapter()
     }
 
     override fun onDestroyView() {

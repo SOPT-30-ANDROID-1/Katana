@@ -37,13 +37,13 @@ class FollowerAdapter :  RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder
     }
 
     //드래그 호출 메소드
-    override fun onItemMove(from_position: Int, to_position: Int) : Boolean {
-        val user = userList[from_position]
+    override fun onItemMove(fromPosition: Int, toPosition: Int) : Boolean {
+        val user = userList[fromPosition]
 
-        userList.removeAt(from_position)
-        userList.add(to_position,user)
+        userList.removeAt(fromPosition)
+        userList.add(toPosition,user)
 
-        notifyItemMoved(from_position, to_position)
+        notifyItemMoved(fromPosition, toPosition)
         return true
     }
 
@@ -55,7 +55,7 @@ class FollowerAdapter :  RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder
 
 
     //클릭 인터페이스 정의
-    interface ItemClickListener{
+    fun interface ItemClickListener{
         fun onClick(view: View, position: Int)
     }
     //클릭 리스너 선언

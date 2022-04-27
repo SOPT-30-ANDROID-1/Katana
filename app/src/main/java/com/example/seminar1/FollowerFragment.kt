@@ -7,22 +7,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ItemTouchHelper
-import com.example.seminar1.databinding.FragmentFollowerRecyclerViewBinding
+import com.example.seminar1.databinding.FragmentFollowerBinding
 
-class FollowerRecyclerView : Fragment() {
+class FollowerFragment : Fragment() {
     private lateinit var followerAdapter: FollowerAdapter
-    private var _binding : FragmentFollowerRecyclerViewBinding? = null
+    private var _binding : FragmentFollowerBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentFollowerRecyclerViewBinding.inflate(layoutInflater,container,false)
-
-        initAdapter()
+        _binding = FragmentFollowerBinding.inflate(layoutInflater,container,false)
         return binding.root
 
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initAdapter()
     }
 
     override fun onDestroyView() {
@@ -45,24 +48,20 @@ class FollowerRecyclerView : Fragment() {
         )
         followerAdapter.notifyDataSetChanged()
 
-        followerAdapter.setItemClickListener(object : FollowerAdapter.ItemClickListener{
-            override fun onClick(view: View, position: Int) {
-                val name = followerAdapter.userList[position].name
-                val introduce = followerAdapter.userList[position].introduction
+        followerAdapter.setItemClickListener { view, position ->
+            val name = followerAdapter.userList[position].name
+            val introduce = followerAdapter.userList[position].introduction
 
-                val intent = Intent(context, DetailActivity::class.java).apply {
-                    putExtra("name",name)
-                    putExtra("introduce",introduce)
-                }
-                startActivity(intent)
-
+            val intent = Intent(context, DetailActivity::class.java).apply {
+                putExtra("name", name)
+                putExtra("introduce", introduce)
             }
-        })
+            startActivity(intent)
+        }
 
         val itemTouchHelperCallback = ItemTouchHelperCallback(followerAdapter)
 
-        val helper = ItemTouchHelper(itemTouchHelperCallback)
-        helper.attachToRecyclerView(binding.rvFollower)
+        ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(binding.rvFollower)
 
     }
 
