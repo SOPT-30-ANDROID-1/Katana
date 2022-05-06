@@ -9,8 +9,8 @@
     android:paddingVertical="15dp">
 
     <ImageView
-        android:id="@+id/iv_profile"
-        android:layout_width="0dp"
+        android:id="@+id/iv_item_profile"
+        android:layout_width="55dp"
         android:layout_height="0dp"
         android:src="@drawable/profile2"
         app:layout_constraintDimensionRatio="1:1"
@@ -22,25 +22,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:fontFamily="@font/noto_sans_kr"
         android:textColor="@color/black"
+        android:textFontWeight="500"
         android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/iv_profile"
-        app:layout_constraintTop_toTopOf="@id/iv_profile"
+        app:layout_constraintStart_toEndOf="@id/iv_item_profile"
+        app:layout_constraintTop_toTopOf="@id/iv_item_profile"
         tools:text="이름" />
 
     <TextView
         android:id="@+id/tv_introduce"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="6dp"
         android:ellipsize="end"
+        android:fontFamily="@font/noto_sans_kr"
         android:maxLines="1"
         android:textColor="@color/black"
+        android:textFontWeight="400"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@id/tv_name"
         app:layout_constraintTop_toBottomOf="@id/tv_name"
         tools:text="자기소개 텍스트 입니다." />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
