@@ -67,4 +67,5 @@ app:tabSelectedTextColor="@color/sopt_main_purple"
     <td><img src="https://user-images.githubusercontent.com/62695395/167148577-1563c1de-142c-471b-9134-06410c4efe69.gif" width="270" height="480" /></td><td><img src="https://user-images.githubusercontent.com/62695395/167148688-7e54e6ff-e39e-4ac9-9852-6da97a8d8e3a.gif"  width="270" height="480" /></td>
   <tr>
 </table>
-
+                                                                                                                         
+                                                                                                                                         
