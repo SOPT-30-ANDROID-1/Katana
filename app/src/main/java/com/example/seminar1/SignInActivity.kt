@@ -12,7 +12,6 @@ import com.example.seminar1.databinding.ActivitySignInBinding
 class SignInActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignInBinding
-    private lateinit var resultLauncher: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,31 +19,35 @@ class SignInActivity : AppCompatActivity() {
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setResultSignUp()
-        ClickSignIn()
-        ClickSignUp()
+        signIn()
 
     }
     //로그인 버튼 클릭 시
-    private fun ClickSignIn(){
+    private fun signIn() {
         binding.btnLogin.setOnClickListener {
             val id = binding.etId.text.toString()
             val pw = binding.etPw.text.toString()
 
             //id,pw 둘 중 하나라도 비어있다면
-            if(id.isEmpty() || pw.isEmpty()){
-                Toast.makeText(this,"아이디/비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
+            if (id.isBlank() || pw.isBlank()) {
+                Toast.makeText(this, "아이디/비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
 
-            }else{ //모두 채워져 있을 경우
-                Toast.makeText(this,"로그인 성공", Toast.LENGTH_SHORT).show()
+            } else { //모두 채워져 있을 경우
+                Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
             }
         }
+
+        //회원가입 버튼 클릭 시
+        binding.btnSignup.setOnClickListener {
+            val intent = Intent(this, SignUpActivity::class.java)
+            resultLauncher.launch(intent)
+        }
     }
-    //회원가입 시 데이터 받아오기
-    private fun setResultSignUp(){
-        resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+
+        //회원가입 시 데이터 받아오기
+        private val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             result -> if(result.resultCode == Activity.RESULT_OK){
             result.data.let {
                 val userId = it?.getStringExtra("id")
@@ -52,14 +55,7 @@ class SignInActivity : AppCompatActivity() {
                 binding.etId.setText(userId)
                 binding.etPw.setText(userPw)
             }
-          }
         }
-    }
-    //회원가입 버튼 클릭 시
-    private fun ClickSignUp(){
-        binding.btnSignup.setOnClickListener{
-            val intent = Intent(this, SignUpActivity::class.java)
-            resultLauncher.launch(intent)
         }
+
     }
-}
