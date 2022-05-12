@@ -8,10 +8,10 @@ interface SoptService {
     @POST("auth/signin")
     fun postLogin(
         @Body body: RequestSignIn
-    ): Call<ResponseSignIn>
+    ): Call<ResponseWrapper<ResponseSignIn>>
 
     @POST("auth/signup")
     fun postSignUp(
         @Body body: RequestSignUp
-    ): Call<ResponseSignUp>
+    ): Call<ResponseWrapper<ResponseSignUp>>
 }

@@ -39,12 +39,12 @@ class SignUpActivity : AppCompatActivity() {
                 password = binding.etSignupPw.text.toString()
         )
 
-        val call : Call<ResponseSignUp> = ServiceCreator.soptService.postSignUp(requestSignUp)
+        val call : Call<ResponseWrapper<ResponseSignUp>> = ServiceCreator.soptService.postSignUp(requestSignUp)
 
-        call.enqueue(object : Callback<ResponseSignUp> {
+        call.enqueue(object : Callback<ResponseWrapper<ResponseSignUp>> {
             override fun onResponse(
-                    call : Call<ResponseSignUp>,
-                    response: Response<ResponseSignUp>
+                    call : Call<ResponseWrapper<ResponseSignUp>>,
+                    response: Response<ResponseWrapper<ResponseSignUp>>
             ){
                 if (response.isSuccessful){
                     val data = response.body()?.data
@@ -54,7 +54,7 @@ class SignUpActivity : AppCompatActivity() {
                 }else Toast.makeText(this@SignUpActivity,"회원가입에 실패하셨습니다.", Toast.LENGTH_SHORT).show()
             }
 
-            override fun onFailure(call: Call<ResponseSignUp>, t: Throwable) {
+            override fun onFailure(call: Call<ResponseWrapper<ResponseSignUp>>, t: Throwable) {
                 Log.e("NetworkTest","error:$t")
             }
         })
