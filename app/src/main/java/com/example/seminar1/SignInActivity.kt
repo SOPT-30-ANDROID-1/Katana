@@ -4,10 +4,13 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.seminar1.databinding.ActivitySignInBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SignInActivity : AppCompatActivity() {
 
@@ -19,11 +22,13 @@ class SignInActivity : AppCompatActivity() {
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        initEvent()
         initAuthButtonClickListeners()
 
     }
     //로그인 버튼 클릭 시
     private fun initAuthButtonClickListeners() {
+        /*
         binding.btnLogin.setOnClickListener {
             val id = binding.etId.text.toString()
             val pw = binding.etPw.text.toString()
@@ -38,6 +43,7 @@ class SignInActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+     */
 
         //회원가입 버튼 클릭 시
         binding.btnSignup.setOnClickListener {
@@ -56,6 +62,38 @@ class SignInActivity : AppCompatActivity() {
                 binding.etPw.setText(userPw)
             }
         }
-        }
-
     }
+
+    private fun initEvent(){
+        binding.btnLogin.setOnClickListener{
+            loginNetwork()
+        }
+    }
+
+    private fun loginNetwork(){
+        val requestSignIn = RequestSignIn(
+            id = binding.etId.text.toString(),
+            password = binding.etPw.text.toString()
+        )
+
+        val call : Call<ResponseSignIn> = ServiceCreator.soptService.postLogin(requestSignIn)
+
+        call.enqueue(object : Callback<ResponseSignIn> {
+            override fun onResponse(
+                call : Call<ResponseSignIn>,
+                response: Response<ResponseSignIn>
+            ){
+                if (response.isSuccessful){
+                    val data = response.body()?.data
+
+                    Toast.makeText(this@SignInActivity,"${data?.email}님 반갑습니다!",Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this@SignInActivity, HomeActivity::class.java))
+                }else Toast.makeText(this@SignInActivity,"로그인에 실패하셨습니다.", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onFailure(call: Call<ResponseSignIn>, t: Throwable) {
+                Log.e("NetworkTest","error:$t")
+            }
+        })
+    }
+}
