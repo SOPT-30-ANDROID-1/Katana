@@ -47,10 +47,11 @@ class SignInActivity : AppCompatActivity() {
         //회원가입 버튼 클릭 시
         binding.btnSignup.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
-            resultLauncher.launch(intent)
+            //resultLauncher.launch(intent)
+            startActivity(intent)
         }
     }
-
+    /*
         //회원가입 시 데이터 받아오기
         private val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             result -> if(result.resultCode == Activity.RESULT_OK){
@@ -62,6 +63,7 @@ class SignInActivity : AppCompatActivity() {
             }
         }
     }
+     */
 
     private fun initEvent(){
         binding.btnLogin.setOnClickListener{
