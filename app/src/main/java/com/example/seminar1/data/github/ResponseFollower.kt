@@ -1,4 +1,4 @@
-package com.example.seminar1
+package com.example.seminar1.data.github
 
 data class ResponseFollower(
         val login: String,

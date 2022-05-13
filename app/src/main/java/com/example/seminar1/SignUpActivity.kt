@@ -6,6 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.example.seminar1.data.ServiceCreator
+import com.example.seminar1.data.sopt.RequestSignUp
+import com.example.seminar1.data.sopt.ResponseSignUp
+import com.example.seminar1.data.sopt.ResponseWrapper
 import com.example.seminar1.databinding.ActivitySignUpBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -28,6 +32,12 @@ class SignUpActivity : AppCompatActivity() {
     private fun initEvent(){
         binding.btnSignupDone.setOnClickListener{
             signUpNetwork()
+            val intent = Intent(this, SignInActivity::class.java).apply {
+                putExtra("id",binding.etSignupId.text.toString())
+                putExtra("pw",binding.etSignupPw.text.toString())
+            }
+            setResult(Activity.RESULT_OK, intent)
+            finish()
         }
     }
 
@@ -58,28 +68,4 @@ class SignUpActivity : AppCompatActivity() {
             }
         })
     }
-
-    /*
-    //회원가입 완료 버튼 클릭시
-    private fun initAuthButtonClickListeners(){
-        binding.btnSignupDone.setOnClickListener {
-            val name = binding.etSignupName.text.toString()
-            val id = binding.etSignupId.text.toString()
-            val pw = binding.etSignupPw.text.toString()
-
-            //name,id,pw 셋 중 하나라도 비어있다면
-            if(name.isBlank() || id.isBlank() || pw.isBlank()){
-                Toast.makeText(this,"입력되지 않은 정보가 있습니다", Toast.LENGTH_SHORT).show()
-
-            }else{ //모두 채워져 있을 경우
-                val intent = Intent(this, SignInActivity::class.java).apply {
-                    putExtra("id",id)
-                    putExtra("pw",pw)
-                }
-                setResult(Activity.RESULT_OK, intent)
-                finish()
-            }
-        }
-    }
-     */
 }

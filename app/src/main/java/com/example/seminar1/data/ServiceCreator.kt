@@ -1,5 +1,7 @@
-package com.example.seminar1
+package com.example.seminar1.data
 
+import com.example.seminar1.data.sopt.SoptService
+import com.example.seminar1.data.github.GithubService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

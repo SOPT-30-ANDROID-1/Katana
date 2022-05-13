@@ -33,12 +33,14 @@ class FollowerAdapter :  RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder
             private val binding: ItemListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: UserData) {
-            Glide.with(binding.root)
-                    .load(data.profile)
-                    .circleCrop()
-                    .into(binding.ivItemProfile)
-            binding.tvName.text = data.name
-            binding.tvIntroduce.text = data.introduction
+            with(binding){
+                Glide.with(binding.root)
+                        .load(data.profile)
+                        .circleCrop()
+                        .into(binding.ivItemProfile)
+                tvName.text = data.name
+                tvIntroduce.text = data.introduction
+            }
         }
     }
 

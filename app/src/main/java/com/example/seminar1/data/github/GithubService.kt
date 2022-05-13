@@ -1,4 +1,4 @@
-package com.example.seminar1
+package com.example.seminar1.data.github
 
 import retrofit2.Call
 import retrofit2.http.GET

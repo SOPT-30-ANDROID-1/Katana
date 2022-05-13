@@ -1,4 +1,4 @@
-package com.example.seminar1
+package com.example.seminar1.data.sopt
 
 data class ResponseWrapper<T>(
         val status: Int,

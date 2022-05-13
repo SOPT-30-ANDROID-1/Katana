@@ -7,6 +7,10 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import com.example.seminar1.data.ServiceCreator
+import com.example.seminar1.data.sopt.RequestSignIn
+import com.example.seminar1.data.sopt.ResponseSignIn
+import com.example.seminar1.data.sopt.ResponseWrapper
 import com.example.seminar1.databinding.ActivitySignInBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -28,30 +32,12 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun initAuthButtonClickListeners() {
-        /*
-        binding.btnLogin.setOnClickListener {
-            val id = binding.etId.text.toString()
-            val pw = binding.etPw.text.toString()
-
-            //id,pw 둘 중 하나라도 비어있다면
-            if (id.isBlank() || pw.isBlank()) {
-                Toast.makeText(this, "아이디/비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
-
-            } else { //모두 채워져 있을 경우
-                Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, HomeActivity::class.java)
-                startActivity(intent)
-            }
-        }
-     */
         //회원가입 버튼 클릭 시
         binding.btnSignup.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
-            //resultLauncher.launch(intent)
-            startActivity(intent)
+            resultLauncher.launch(intent)
         }
     }
-    /*
         //회원가입 시 데이터 받아오기
         private val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             result -> if(result.resultCode == Activity.RESULT_OK){
@@ -63,7 +49,6 @@ class SignInActivity : AppCompatActivity() {
             }
         }
     }
-     */
 
     private fun initEvent(){
         binding.btnLogin.setOnClickListener{
@@ -81,8 +66,8 @@ class SignInActivity : AppCompatActivity() {
 
         call.enqueue(object : Callback<ResponseWrapper<ResponseSignIn>> {
             override fun onResponse(
-                call : Call<ResponseWrapper<ResponseSignIn>>,
-                response: Response<ResponseWrapper<ResponseSignIn>>
+                    call : Call<ResponseWrapper<ResponseSignIn>>,
+                    response: Response<ResponseWrapper<ResponseSignIn>>
             ){
                 if (response.isSuccessful){
                     val data = response.body()?.data

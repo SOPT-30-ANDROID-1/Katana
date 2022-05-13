@@ -11,7 +11,9 @@ import android.widget.Toast
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.seminar1.*
 import com.example.seminar1.adapter.FollowerAdapter
+import com.example.seminar1.data.ServiceCreator
 import com.example.seminar1.data.UserData
+import com.example.seminar1.data.github.ResponseFollower
 import com.example.seminar1.databinding.FragmentFollowerBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -57,9 +59,7 @@ class FollowerFragment : Fragment() {
         }
 
         val itemTouchHelperCallback = ItemTouchHelperCallback(followerAdapter)
-
         ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(binding.rvFollower)
-
     }
 
     private fun followerNetwork(){
@@ -74,8 +74,8 @@ class FollowerFragment : Fragment() {
                     val data = response.body()!!
                     for(i in data.indices){
                         val login = data[i].login
-                        val imgUrl = data[i].avatar_url
                         val introduce = data[i].html_url
+                        val imgUrl = data[i].avatar_url
 
                         followerAdapter.userList.add(UserData(login,introduce,imgUrl))
                         followerAdapter.notifyDataSetChanged()

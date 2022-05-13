@@ -1,10 +1,9 @@
-package com.example.seminar1
+package com.example.seminar1.data.sopt
 
 import com.google.gson.annotations.SerializedName
 
-data class RequestSignUp(
+data class RequestSignIn(
     @SerializedName("email")
     val id : String,
-    val name : String,
     val password : String
 )
