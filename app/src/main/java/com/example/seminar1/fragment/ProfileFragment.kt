@@ -37,23 +37,22 @@ class ProfileFragment : Fragment() {
             add<FollowerFragment>(R.id.fragment_list)
         }
 
-        binding.btnFollower.isSelected = true
+        with(binding) {
+            btnFollower.isSelected = true
 
-        binding.btnFollower.setOnClickListener {
-            binding.btnFollower.isSelected = true
-            binding.btnRepo.isSelected = false
-
-            if (position == REPO_POSITION) {
-                replaceFragment<FollowerFragment>(FOLLOWER_POSITION)
+            btnFollower.setOnClickListener {
+                btnFollower.isSelected = true
+                btnRepo.isSelected = false
+                if (position == REPO_POSITION) {
+                    replaceFragment<FollowerFragment>(FOLLOWER_POSITION)
+                }
             }
-        }
-
-        binding.btnRepo.setOnClickListener {
-            binding.btnRepo.isSelected = true
-            binding.btnFollower.isSelected = false
-
-            if (position == FOLLOWER_POSITION){
-                replaceFragment<RepositoryFragment>(REPO_POSITION)
+            btnRepo.setOnClickListener {
+                binding.btnRepo.isSelected = true
+                binding.btnFollower.isSelected = false
+                if (position == FOLLOWER_POSITION){
+                    replaceFragment<RepositoryFragment>(REPO_POSITION)
+                }
             }
         }
     }
@@ -79,7 +78,7 @@ class ProfileFragment : Fragment() {
     }
 
     companion object {
-        const val FOLLOWER_POSITION = 1
-        const val REPO_POSITION = 2
+        private const val FOLLOWER_POSITION = 1
+        private const val REPO_POSITION = 2
     }
 }

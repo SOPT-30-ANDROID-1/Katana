@@ -26,7 +26,7 @@ class SignInActivity : AppCompatActivity() {
         initAuthButtonClickListeners()
 
     }
-    //로그인 버튼 클릭 시
+
     private fun initAuthButtonClickListeners() {
         /*
         binding.btnLogin.setOnClickListener {
@@ -44,7 +44,6 @@ class SignInActivity : AppCompatActivity() {
             }
         }
      */
-
         //회원가입 버튼 클릭 시
         binding.btnSignup.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
