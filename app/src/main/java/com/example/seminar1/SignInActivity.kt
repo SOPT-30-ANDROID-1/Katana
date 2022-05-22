@@ -19,11 +19,11 @@ class SignInActivity : AppCompatActivity() {
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        signIn()
+        initAuthButtonClickListeners()
 
     }
     //로그인 버튼 클릭 시
-    private fun signIn() {
+    private fun initAuthButtonClickListeners() {
         binding.btnLogin.setOnClickListener {
             val id = binding.etId.text.toString()
             val pw = binding.etPw.text.toString()

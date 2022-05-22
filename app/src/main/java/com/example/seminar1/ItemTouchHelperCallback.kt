@@ -29,7 +29,7 @@ class ItemTouchHelperCallback(private val listener: ItemTouchHelperListener):Ite
     }
 
     interface ItemTouchHelperListener{
-        fun onItemMove(from_position: Int, to_position: Int): Boolean
+        fun onItemMove(fromPosition: Int, toPosition: Int): Boolean
         fun onItemSwipe(position: Int)
     }
 

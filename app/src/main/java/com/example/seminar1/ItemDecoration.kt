@@ -36,12 +36,10 @@ class ItemDecoration (context: Context, private val spanCount : Int) : RecyclerV
         }
     }
 
-    private fun dpToPx(context: Context, dp: Int): Int {
-        return TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP,
-                dp.toFloat(),
-                context.resources.displayMetrics
-        ).toInt()
-    }
+    private fun dpToPx(context: Context, dp: Int) = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            dp.toFloat(),
+            context.resources.displayMetrics
+    ).toInt()
 }
 

@@ -17,6 +17,5 @@ class DetailActivity : AppCompatActivity() {
         binding.tvDetailName.text = intent.getStringExtra("name")
         binding.tvDetailIntroduce.text = intent.getStringExtra("introduce")
 
-
     }
 }
