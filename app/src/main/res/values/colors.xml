@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="sopt_main_purple">#8040FF</color>
+    <color name="sopt_sub_purple">#BC9AFF</color>
+    <color name="sopt_white_purple">#FAF8FF</color>
+    <color name="sopt_gray">#B5B5B5</color>
+    <color name="sopt_black">#333333</color>
+    <color name="sopt_black2">#444444</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
