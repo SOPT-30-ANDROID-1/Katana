@@ -1,4 +1,4 @@
-package com.example.seminar1.fragment
+package com.example.seminar1.ui.home.camera
 
 import android.app.Activity.RESULT_CANCELED
 import android.app.Activity.RESULT_OK

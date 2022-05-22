@@ -1,4 +1,4 @@
-package com.example.seminar1
+package com.example.seminar1.ui
 
 import android.app.Activity
 import android.content.Intent
@@ -12,6 +12,7 @@ import com.example.seminar1.data.sopt.RequestSignIn
 import com.example.seminar1.data.sopt.ResponseSignIn
 import com.example.seminar1.data.sopt.ResponseWrapper
 import com.example.seminar1.databinding.ActivitySignInBinding
+import com.example.seminar1.ui.home.HomeActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

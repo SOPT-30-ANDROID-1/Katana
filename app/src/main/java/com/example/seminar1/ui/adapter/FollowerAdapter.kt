@@ -1,12 +1,11 @@
-package com.example.seminar1.adapter
+package com.example.seminar1.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.seminar1.ItemTouchHelperCallback
-import com.example.seminar1.R
+import com.example.seminar1.util.ItemTouchHelperCallback
 import com.example.seminar1.data.UserData
 import com.example.seminar1.databinding.ItemListBinding
 

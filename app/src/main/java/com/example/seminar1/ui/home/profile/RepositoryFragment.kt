@@ -1,12 +1,12 @@
-package com.example.seminar1.fragment
+package com.example.seminar1.ui.home.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.seminar1.ItemDecoration
-import com.example.seminar1.adapter.RepositoryAdapter
+import com.example.seminar1.util.ItemDecoration
+import com.example.seminar1.ui.adapter.RepositoryAdapter
 import com.example.seminar1.data.RepoData
 import com.example.seminar1.databinding.FragmentRepositoryBinding
 

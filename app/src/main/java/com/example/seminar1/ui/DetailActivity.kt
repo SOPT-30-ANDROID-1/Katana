@@ -1,4 +1,4 @@
-package com.example.seminar1
+package com.example.seminar1.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

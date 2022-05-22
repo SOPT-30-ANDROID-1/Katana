@@ -1,4 +1,4 @@
-package com.example.seminar1.fragment
+package com.example.seminar1.ui.home.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

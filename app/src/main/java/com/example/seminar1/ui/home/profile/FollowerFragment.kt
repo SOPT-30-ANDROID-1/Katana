@@ -1,4 +1,4 @@
-package com.example.seminar1.fragment
+package com.example.seminar1.ui.home.profile
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,12 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.ItemTouchHelper
-import com.example.seminar1.*
-import com.example.seminar1.adapter.FollowerAdapter
+import com.example.seminar1.ui.adapter.FollowerAdapter
 import com.example.seminar1.data.ServiceCreator
 import com.example.seminar1.data.UserData
 import com.example.seminar1.data.github.ResponseFollower
 import com.example.seminar1.databinding.FragmentFollowerBinding
+import com.example.seminar1.ui.DetailActivity
+import com.example.seminar1.util.ItemDecoration
+import com.example.seminar1.util.ItemTouchHelperCallback
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

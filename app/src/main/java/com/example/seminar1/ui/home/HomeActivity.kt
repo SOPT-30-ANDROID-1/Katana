@@ -1,13 +1,14 @@
-package com.example.seminar1
+package com.example.seminar1.ui.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
-import com.example.seminar1.adapter.ViewPagerAdapter
+import com.example.seminar1.R
+import com.example.seminar1.ui.adapter.ViewPagerAdapter
 import com.example.seminar1.databinding.ActivityHomeBinding
-import com.example.seminar1.fragment.CameraFragment
-import com.example.seminar1.fragment.HomeFragment
-import com.example.seminar1.fragment.ProfileFragment
+import com.example.seminar1.ui.home.camera.CameraFragment
+import com.example.seminar1.ui.home.home.HomeFragment
+import com.example.seminar1.ui.home.profile.ProfileFragment
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -49,7 +50,7 @@ class HomeActivity : AppCompatActivity() {
                     true
                 }
                 else -> {
-                    binding.vpMain.currentItem = PHOTO_FRAGMENT
+                    binding.vpMain.currentItem = CAMERA_FRAGMENT
                     true
                 }
             }
@@ -59,7 +60,7 @@ class HomeActivity : AppCompatActivity() {
     companion object {
         const val PROFILE_FRAGMENT = 0
         const val HOME_FRAGMENT = 1
-        const val PHOTO_FRAGMENT = 2
+        const val CAMERA_FRAGMENT = 2
     }
 }
 

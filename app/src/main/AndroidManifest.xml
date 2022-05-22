@@ -12,11 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Seminar1"
         android:usesCleartextTraffic="true">
-        <activity android:name=".DetailActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".SignUpActivity" />
+        <activity android:name=".ui.DetailActivity" />
+        <activity android:name=".ui.home.HomeActivity" />
+        <activity android:name=".ui.SignUpActivity" />
         <activity
-            android:name=".SignInActivity"
+            android:name=".ui.SignInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.Main" />

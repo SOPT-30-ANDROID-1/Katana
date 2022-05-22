@@ -1,14 +1,12 @@
-package com.example.seminar1.fragment
+package com.example.seminar1.ui.home.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.seminar1.adapter.TabViewPagerAdapter
 import com.example.seminar1.databinding.FragmentHomeBinding
-import com.example.seminar1.fragment.FollowerTabFragment
-import com.example.seminar1.fragment.FollowingTabFragment
+import com.example.seminar1.ui.adapter.TabViewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 
 class HomeFragment : Fragment() {
