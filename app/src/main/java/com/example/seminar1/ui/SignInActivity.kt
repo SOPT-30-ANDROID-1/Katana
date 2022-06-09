@@ -1,6 +1,7 @@
 package com.example.seminar1.ui
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.seminar1.data.ServiceCreator
 import com.example.seminar1.data.sopt.RequestSignIn
+import com.example.seminar1.data.sopt.RequestSignUp
 import com.example.seminar1.data.sopt.ResponseSignIn
 import com.example.seminar1.data.sopt.ResponseWrapper
 import com.example.seminar1.databinding.ActivitySignInBinding
@@ -57,30 +59,45 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
+    fun <ResponseType> Call<ResponseType>.enqueueUtil(
+        onSuccess: (ResponseType) -> Unit,
+        onError: ((stateCode:Int) -> Unit)? = null
+    ){
+        this.enqueue(object : Callback<ResponseType>{
+            override fun onResponse(call: Call<ResponseType>, response: Response<ResponseType>) {
+                if (response.isSuccessful){
+                    onSuccess.invoke(response.body() ?: return)
+                    startActivity(Intent(this@SignInActivity, HomeActivity::class.java))
+                }else {
+                    onError?.invoke(response.code())
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseType>, t: Throwable) {
+                Log.d("NetworkTest","error:$t")
+            }
+        })
+    }
+
     private fun loginNetwork(){
         val requestSignIn = RequestSignIn(
             id = binding.etId.text.toString(),
             password = binding.etPw.text.toString()
         )
 
-        val call : Call<ResponseWrapper<ResponseSignIn>> = ServiceCreator.soptService.postLogin(requestSignIn)
+        val call = ServiceCreator.soptService.postLogin(requestSignIn)
 
-        call.enqueue(object : Callback<ResponseWrapper<ResponseSignIn>> {
-            override fun onResponse(
-                    call : Call<ResponseWrapper<ResponseSignIn>>,
-                    response: Response<ResponseWrapper<ResponseSignIn>>
-            ){
-                if (response.isSuccessful){
-                    val data = response.body()?.data
-
-                    Toast.makeText(this@SignInActivity,"${data?.email}님 반갑습니다!",Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this@SignInActivity, HomeActivity::class.java))
-                }else Toast.makeText(this@SignInActivity,"로그인에 실패하셨습니다.", Toast.LENGTH_SHORT).show()
+        call.enqueueUtil(
+            onSuccess = {
+                showToast("로그인에 성공하였습니다.")
+            },
+            onError = {
+                showToast("로그인에 실패하였습니다.")
             }
+        )
+    }
 
-            override fun onFailure(call: Call<ResponseWrapper<ResponseSignIn>>, t: Throwable) {
-                Log.e("NetworkTest","error:$t")
-            }
-        })
+    fun Context.showToast(msg: String){
+        Toast.makeText(this,msg, Toast.LENGTH_SHORT).show()
     }
 }
