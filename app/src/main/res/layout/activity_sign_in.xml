@@ -19,6 +19,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/ib_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="22dp"
+        android:background="#ffffff"
+        android:src="@drawable/selector_checkbox"
+        app:layout_constraintStart_toEndOf="@id/tv_sopt"
+        app:layout_constraintTop_toBottomOf="@id/tv_sopt" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="26dp"
+        android:text="자동 로그인"
+        app:layout_constraintStart_toEndOf="@id/ib_check"
+        app:layout_constraintTop_toBottomOf="@id/tv_sopt" />
+
     <TextView
         android:id="@+id/tv_id"
         android:layout_width="0dp"
@@ -103,6 +123,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

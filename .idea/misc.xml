@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_checkbox_off.xml" value="0.1145" />
+        <entry key="app/src/main/res/drawable/selector_button.xml" value="0.1545" />
+        <entry key="app/src/main/res/drawable/selector_checkbox.xml" value="0.1325" />
         <entry key="app/src/main/res/drawable/shape_button.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/shape_unselect_button.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_detail.xml" value="0.225" />

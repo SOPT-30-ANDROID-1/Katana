@@ -8,11 +8,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import com.example.seminar1.util.SOPTSharedPreferences
 import com.example.seminar1.data.ServiceCreator
 import com.example.seminar1.data.sopt.RequestSignIn
-import com.example.seminar1.data.sopt.RequestSignUp
-import com.example.seminar1.data.sopt.ResponseSignIn
-import com.example.seminar1.data.sopt.ResponseWrapper
 import com.example.seminar1.databinding.ActivitySignInBinding
 import com.example.seminar1.ui.home.HomeActivity
 import retrofit2.Call
@@ -27,14 +25,19 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivitySignInBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
-        initEvent()
         initAuthButtonClickListeners()
+        initEvent()
+        isAutoLogin()
 
+        setContentView(binding.root)
     }
 
     private fun initAuthButtonClickListeners() {
+        //로그인 버튼 클릭 시
+        binding.btnLogin.setOnClickListener{
+            loginNetwork()
+        }
         //회원가입 버튼 클릭 시
         binding.btnSignup.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
@@ -54,8 +57,18 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun initEvent(){
-        binding.btnLogin.setOnClickListener{
-            loginNetwork()
+        binding.ibCheck.setOnClickListener{
+            binding.ibCheck.isSelected = !binding.ibCheck.isSelected
+
+            SOPTSharedPreferences.setAutoLogin(this,binding.ibCheck.isSelected)
+        }
+    }
+
+    private fun isAutoLogin(){
+        if (SOPTSharedPreferences.getAutoLogin(this)){
+            showToast("자동로그인 되었습니다.")
+            startActivity(Intent(this@SignInActivity, HomeActivity::class.java))
+            finish()
         }
     }
 
