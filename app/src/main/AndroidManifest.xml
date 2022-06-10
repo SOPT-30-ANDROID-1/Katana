@@ -15,6 +15,7 @@
         <activity android:name=".ui.DetailActivity" />
         <activity android:name=".ui.home.HomeActivity" />
         <activity android:name=".ui.SignUpActivity" />
+        <activity android:name=".ui.home.profile.SettingActivity" />
         <activity
             android:name=".ui.SignInActivity"
             android:exported="true">

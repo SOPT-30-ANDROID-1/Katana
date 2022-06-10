@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/drawable/shape_unselect_button.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_detail.xml" value="0.225" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.12284701114488349" />
+        <entry key="app/src/main/res/layout/activity_setting.xml" value="0.2171875" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.2526041666666667" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.12284701114488349" />
         <entry key="app/src/main/res/layout/fragment_camera.xml" value="0.1" />

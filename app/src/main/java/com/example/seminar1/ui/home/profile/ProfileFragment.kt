@@ -1,5 +1,6 @@
 package com.example.seminar1.ui.home.profile
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -53,6 +54,10 @@ class ProfileFragment : Fragment() {
                 if (position == FOLLOWER_POSITION){
                     replaceFragment<RepositoryFragment>(REPO_POSITION)
                 }
+            }
+            ibSettings.setOnClickListener {
+                val intent = Intent(context, SettingActivity::class.java)
+                startActivity(intent)
             }
         }
     }
