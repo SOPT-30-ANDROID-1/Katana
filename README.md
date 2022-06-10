@@ -75,3 +75,4 @@ object SOPTSharedPreferences {
 <td><img src="https://user-images.githubusercontent.com/62695395/173040236-9e5d1695-535c-4559-84d0-24d7b8ea6199.gif" width="270" height="480" /></td>
   <tr>
 </table>
+
