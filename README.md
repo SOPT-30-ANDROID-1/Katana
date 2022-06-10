@@ -1,152 +1,78 @@
-
-# Seminar2
----
-
-### # ItemDecoration
-> RecyclerView 아이템 간 간격 주기
+# Seminar7
+--- 
+#### # SOPTSharedPreferences
 ``` kotlin
-class ItemDecoration (context: Context, private val spanCount : Int) 
-: RecyclerView.ItemDecoration() {
+object SOPTSharedPreferences {
+    private const val STORAGE_KEY = "USER_AUTH"
+    private const val AUTO_LOGIN = "AUTO_LOGIN"
+    private lateinit var preferences: SharedPreferences
+
+    fun init(context: Context): SharedPreferences {
+        return context.getSharedPreferences(STORAGE_KEY,Context.MODE_PRIVATE)
+    }
+
+    fun getAutoLogin(context: Context): Boolean {
+        return init(context).getBoolean(AUTO_LOGIN, false)
+    }
+
+    fun setAutoLogin(context: Context, value: Boolean){
+        init(context).edit()
+            .putBoolean(AUTO_LOGIN, value)
+            .apply()
+    }
+
+    fun setLogout(context: Context){
+        preferences = context.getSharedPreferences(STORAGE_KEY, Context.MODE_PRIVATE)
+        preferences.edit()
+            .remove(AUTO_LOGIN)
+            .clear()
+            .apply()
+    }
+}
+```
++ __SharedPreferences__ : key-value 방식으로 간단하게 데이터를 저장하는 방식
+    + 앱 전역에서 호출되므로 싱글톤 객체로 생성하여 관리
++ __getSharedPreferences() Activity 모드__ 
+    + MODE_PRIVATE : 해당 데이터는 해당 앱에서만 사용 가능
  
-override fun getItemOffsets(
-            outRect: Rect,
-            view: View,
-            parent: RecyclerView,
-            state: RecyclerView.State
-    ) {
-    super.getItemOffsets(outRect, view, parent, state)
-    }
-}
-```
-+ __ItemDecoration__ : RecyclerView 내부에 있는 추상 클래스로 RecyclerView의 아이템을 꾸미는 역할
-+ __getItemOffsets()__ : 아이템 간 간격을 지정해 주는 메서드 
-   + ItemDecoration 클래스의 생성자로 spanCount를 인자로 설정
-   + spanCount에 따라 간격을 다르게 적용
-
+> 자동 로그인 
+#### # SignInActivity
 ``` kotlin
-binding.rvFollower.addItemDecoration(ItemDecoration(requireContext(),1)) 
-```
-+ RecyclerView에 적용 
+    private fun initEvent(){
+        binding.ibCheck.setOnClickListener{
+            binding.ibCheck.isSelected = !binding.ibCheck.isSelected
 
-### # ItemTouchHelperCallback
-> RecyclerView Item 이동 삭제 구현
-+ __ItemTouchHelper__ : RecyclerView에 삭제를 위한 스와이프 및 드래그 앤 드롭을 지원하는 유틸리티 클래스
-``` kotlin
-interface ItemTouchHelperListener{
-    fun onItemMove(from_position: Int, to_position: Int): Boolean
-    fun onItemSwipe(position: Int)
-}
-```
-+ ItemTouchHelperListener 인터페이스 선언
-   + RecyclerView의 Adapter와 ItemTouchHelper.Callback을 연결시켜 주는 리스너
-``` kotlin
-class ItemTouchHelperCallback(private val listener: ItemTouchHelperListener):ItemTouchHelper.Callback(){
-    override fun getMovementFlags(
-        recyclerView: RecyclerView,
-        viewHolder: RecyclerView.ViewHolder
-    ): Int {
-        //드래그 방향
-        val dragFlags = ItemTouchHelper.UP or ItemTouchHelper.DOWN
-        //스와이프 방향
-        val swipeFlags = ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
-
-        return makeMovementFlags(dragFlags,swipeFlags)
+            SOPTSharedPreferences.setAutoLogin(this,binding.ibCheck.isSelected)
+        }
     }
 
-    override fun onMove(
-        recyclerView: RecyclerView,
-        viewHolder: RecyclerView.ViewHolder,
-        target: RecyclerView.ViewHolder
-    ): Boolean {
-        return listener.onItemMove(viewHolder.adapterPosition,target.adapterPosition)
+    private fun isAutoLogin(){
+        if (SOPTSharedPreferences.getAutoLogin(this)){
+            showToast("자동로그인 되었습니다.")
+            startActivity(Intent(this@SignInActivity, HomeActivity::class.java))
+            finish()
+        }
     }
-
-    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-        listener.onItemSwipe(viewHolder.adapterPosition)
-    }
- }
 ```
-+ ItemTouchHelperCallback 클래스 생성
-   + ItemTouchHelper.Callback 클래스를 상속
-
++ 자동 로그인 체크박스가 선택되었을 경우 true, 아닐 경우 false를 SharedPreferences에 저장
+    + true일 경우 HomeActivity가 바로 실행되도록 함
+ 
+> 자동 로그인 해제
+ 
+#### # SettingActivity
 ``` kotlin
-class FollowerAdapter :  RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>(),ItemTouchHelperCallback.ItemTouchHelperListener{
-
-    //드래그 호출 메소드
-    override fun onItemMove(from_position: Int, to_position: Int) : Boolean {
-        val user = userList[from_position]
-
-        userList.removeAt(from_position)
-        userList.add(to_position,user)
-
-        notifyItemMoved(from_position, to_position)
-        return true
-    }
-
-    //스와이프 호출 메소드
-    override fun onItemSwipe(position: Int){
-        userList.removeAt(position)
-        notifyItemRemoved(position)
-    }
-}
-```  
-+ Adapter에 ItemTouchHelperListener 리스너 구현
-   + onItemMove 메소드와 onItemSwipe 메소드 오버라이드
-
-``` kotlin
-val itemTouchHelperCallback = ItemTouchHelperCallback(followerAdapter)
-
-val helper = ItemTouchHelper(itemTouchHelperCallback)
-helper.attachToRecyclerView(binding.rvFollower)
-```
-+ RecyclerView에 적용
-
-> button/Item Layout background 설정 
-#### # button_background.xml
-``` kotlin 
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient
-        android:angle="0"
-        android:endColor="#2ebf91"
-        android:startColor="#8360c3"
-        android:type="linear" />
-    <corners
-        android:bottomLeftRadius="15dp"
-        android:bottomRightRadius="15dp"
-        android:topLeftRadius="15dp"
-        android:topRightRadius="15dp" />
-    <padding
-        android:bottom="0dp"
-        android:left="0dp"
-        android:right="0dp"
-        android:top="0dp" />
-</shape>
-```
-#### # activity_home.xml
-``` kotlin
-android:background="@drawable/button_background" 
-```
-+ drawable 폴더에 button_background.xml 파일 생성
-   + button에서 background 속성으로 적용
-
-> TextView의 내용이 길어질 경우
-``` kotlin
-android:ellipsize="end"
-android:maxLines="1" 
+        binding.btnLogout.setOnClickListener{
+            SOPTSharedPreferences.setLogout(this)
+            showToast("자동로그인이 해제되었습니다.")
+        }
 ``` 
-+ __ellipsize 속성 end 사용__ : 뒷 부분을 ... 으로 표시
-+ __maxLines 속성 사용__ : TextView의 라인 수를 지정
-
-
-### # 실행 화면 
-
+ 
+### # 실행 화면
 <table>
-  <tr>
-    <td><img src="https://user-images.githubusercontent.com/62695395/164729567-fdcf4af2-3712-49b3-86c9-3759bab0a746.gif" width="270" height="480" /></td><td><img src="https://user-images.githubusercontent.com/62695395/164729802-87348470-1990-490e-bddb-090043eab048.gif"  width="270" height="480" /></td>
+  <tr>
+<td><img src="https://user-images.githubusercontent.com/62695395/173039998-63453a8e-39df-433a-a9e8-aaa0b23d3ccf.gif" width="270" height="480" /></td>
+    <td><img src="https://user-images.githubusercontent.com/62695395/173040094-08c0bcda-4ae7-4889-a5cf-cf6f5206f603.gif" width="270" height="480" /></td>
+<td><img src="https://user-images.githubusercontent.com/62695395/173040236-9e5d1695-535c-4559-84d0-24d7b8ea6199.gif" width="270" height="480" /></td>
   <tr>
 </table>
 
-
-
-                                                                                                                                         
-                                                                                                                                         

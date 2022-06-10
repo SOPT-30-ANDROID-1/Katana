@@ -4,19 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignInActivity">
+    tools:context=".ui.SignInActivity">
 
     <TextView
         android:id="@+id/tv_sopt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
+        android:fontFamily="@font/noto_sans_kr"
         android:text="SOPT"
+        android:textFontWeight="500"
         android:textSize="40sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ib_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="22dp"
+        android:background="#ffffff"
+        android:src="@drawable/selector_checkbox"
+        app:layout_constraintStart_toEndOf="@id/tv_sopt"
+        app:layout_constraintTop_toBottomOf="@id/tv_sopt" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/noto_sans_kr"
+        android:text="자동 로그인"
+        android:textFontWeight="400"
+        app:layout_constraintStart_toEndOf="@id/ib_check"
+        app:layout_constraintTop_toBottomOf="@id/tv_sopt" />
 
     <TextView
         android:id="@+id/tv_id"
@@ -24,9 +47,10 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="50dp"
+        android:fontFamily="@font/noto_sans_kr"
         android:text="아이디"
         android:textColor="#000000"
-        android:textStyle="bold"
+        android:textFontWeight="400"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_sopt" />
@@ -36,7 +60,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
+        android:fontFamily="@font/noto_sans_kr"
         android:hint="아이디를 입력해주세요."
+        android:textFontWeight="300"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,9 +74,10 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="30dp"
+        android:fontFamily="@font/noto_sans_kr"
         android:text="비밀번호"
         android:textColor="#000000"
-        android:textStyle="bold"
+        android:textFontWeight="400"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_id" />
@@ -60,8 +87,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
+        android:fontFamily="@font/noto_sans_kr"
         android:hint="비밀번호를 입력해주세요."
         android:inputType="textPassword"
+        android:textFontWeight="300"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,8 +103,10 @@
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="30dp"
         android:backgroundTint="@color/purple_500"
+        android:fontFamily="@font/noto_sans_kr"
         android:text="LOGIN"
         android:textColor="#ffffff"
+        android:textFontWeight="400"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_pw" />
@@ -87,11 +118,12 @@
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="#8BC34A"
+        android:fontFamily="@font/noto_sans_kr"
         android:text="회원가입"
         android:textColor="#ffffff"
+        android:textFontWeight="400"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
